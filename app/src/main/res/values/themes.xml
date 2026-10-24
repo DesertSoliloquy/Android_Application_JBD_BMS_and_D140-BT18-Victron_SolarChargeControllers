@@ -1,0 +1,7 @@
+<resources>
+    <!-- Base theme used before Compose takes over; Compose supplies the real theme. -->
+    <style name="Theme.BMSMonitor" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#12151A</item>
+        <item name="android:navigationBarColor">#12151A</item>
+    </style>
+</resources>
