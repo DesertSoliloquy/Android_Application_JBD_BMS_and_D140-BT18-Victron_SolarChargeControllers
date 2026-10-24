@@ -11,13 +11,6 @@ D140's **load on/off** toggle (the switchable auxiliary output on that
 controller), and only when you flip that switch in the D140's detail view.
 Everything else is observation.
 
-> Honest status: the protocol byte-math (JBD framing, the D140 Modbus-TCP
-> frames, the Renogy CRC, and the corrected Victron AES decrypt) has been
-> verified against the real captures from the desktop project. The Android
-> GUI/BLE layer is written to standard patterns but has **not** been run on a
-> device yet (it can't be, here). Expect it to open in Android Studio and build
-> after at most a minor fix-up or two — see "If the build complains" below.
-
 ---
 
 ## Building
@@ -109,23 +102,3 @@ Solar** (Modbus RTU over BLE), **D140 / BT18** (Modbus TCP over BLE).
   stages but not individually named.
 - **Victron battery monitors / SmartShunts** are recognized as Victron but not
   displayed — the app is scoped to chargers and BMS.
-- **Home-screen widget.** The in-app **Summary** screen is the compact view for
-  now. A true Android home-screen widget (via Jetpack Glance) is a natural next
-  step if you want at-a-glance data without opening the app.
-
-## Publishing
-
-Before pushing to a public repo: add a `LICENSE` (MIT is the usual permissive
-choice), and change the `applicationId` / `namespace` from the placeholder
-`com.offgrid.bmsmonitor` to your own. The reverse-engineered protocol notes
-(including the D140 / BT18 write commands) are documented in the companion
-`D140-BT18-PROTOCOL.md` from the desktop project — worth including so others can
-build their own clients.
-
-## If the build complains
-
-Because this hasn't been compiled against the Android SDK here, a dependency
-or an experimental-API opt-in may need a nudge in Android Studio. These are
-quick: the IDE underlines the line, and the fix is usually an `@OptIn(...)` or
-a version bump in `libs.versions.toml`. Paste the first error and it's a
-one-line fix — the same way the desktop PySide6 enum issue was handled.
